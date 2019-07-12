@@ -1,0 +1,12 @@
+C:\Users\Althir\source\repos\DQ2SE\DQ2SE\bin\Debug\DQ2SE.exe.config
+C:\Users\Althir\source\repos\DQ2SE\DQ2SE\bin\Debug\DQ2SE.exe
+C:\Users\Althir\source\repos\DQ2SE\DQ2SE\bin\Debug\DQ2SE.pdb
+C:\Users\Althir\source\repos\DQ2SE\DQ2SE\bin\Debug\DQ2SE.xml
+C:\Users\Althir\source\repos\DQ2SE\DQ2SE\obj\Debug\DQ2SE.vbprojAssemblyReference.cache
+C:\Users\Althir\source\repos\DQ2SE\DQ2SE\obj\Debug\DQ2SE.Form1.resources
+C:\Users\Althir\source\repos\DQ2SE\DQ2SE\obj\Debug\DQ2SE.Resources.resources
+C:\Users\Althir\source\repos\DQ2SE\DQ2SE\obj\Debug\DQ2SE.vbproj.GenerateResource.cache
+C:\Users\Althir\source\repos\DQ2SE\DQ2SE\obj\Debug\DQ2SE.vbproj.CoreCompileInputs.cache
+C:\Users\Althir\source\repos\DQ2SE\DQ2SE\obj\Debug\DQ2SE.exe
+C:\Users\Althir\source\repos\DQ2SE\DQ2SE\obj\Debug\DQ2SE.xml
+C:\Users\Althir\source\repos\DQ2SE\DQ2SE\obj\Debug\DQ2SE.pdb
