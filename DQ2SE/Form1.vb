@@ -26,12 +26,24 @@ Public Class Form1
             'Enable options after load
             AddGoldBtn.Enabled = True
             PotsButton.Enabled = True
-            RadioButton1.Enabled = True
-            RadioButton2.Enabled = True
-            RadioButton3.Enabled = True
+            DiffEasy.Enabled = True
+            DiffNormal.Enabled = True
+            DiffHC.Enabled = True
             DifficultyBtn.Enabled = True
             '--------------------
-            MsgBox("Notice: This tool is a save editor, not memory editor! Please exit from game completely before using this software.", MsgBoxStyle.Information, "DQ2SE")
+            'Difficulty Checker
+            Dim difficultycheck As New IO.FileStream(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Appdata\\LocalLow\Brain Seal Ltd\Dark Quest 2\" & PlayerProfiles.SelectedItem & ".bin", FileMode.Open, FileAccess.Read)
+            difficultycheck.Position = &H4D
+            Difficulty.Text = difficultycheck.ReadByte.ToString()
+            If Difficulty.Text = "2" Then 'Hardcore
+                DiffHC.Checked = True
+            ElseIf Difficulty.Text = "1" Then 'Easy
+                DiffEasy.Checked = True
+            ElseIf Difficulty.Text = "0" Then 'Normal
+                DiffNormal.Checked = True
+            End If
+
+            '--------------------
         ElseIf PlayerProfiles.SelectedItem = "" Then
             MsgBox("Notice: You did not select a file!", MsgBoxStyle.Exclamation, "DQ2SE")
         Else
@@ -41,15 +53,15 @@ Public Class Form1
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles AddGoldBtn.Click
-        Dim fs As New IO.FileStream(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Appdata\\LocalLow\Brain Seal Ltd\Dark Quest 2\" & PlayerProfiles.SelectedItem & ".bin", FileMode.Open, FileAccess.ReadWrite)
-        fs.Position = &H37
-        fs.WriteByte(&H98)
-        fs.Position = &H38
-        fs.WriteByte(&H96)
-        fs.Position = &H39
-        fs.WriteByte(&H80)
-        fs.Close()
-        fs.Dispose()
+        Dim AddGold As New IO.FileStream(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Appdata\\LocalLow\Brain Seal Ltd\Dark Quest 2\" & PlayerProfiles.SelectedItem & ".bin", FileMode.Open, FileAccess.ReadWrite)
+        AddGold.Position = &H37
+        AddGold.WriteByte(&H98)
+        AddGold.Position = &H38
+        AddGold.WriteByte(&H96)
+        AddGold.Position = &H39
+        AddGold.WriteByte(&H80)
+        AddGold.Close()
+        AddGold.Dispose()
         StatusLabel.ForeColor = Color.Red
         StatusLabel.Text = "GOLD ADDED!"
     End Sub
@@ -59,16 +71,34 @@ Public Class Form1
     End Sub
 
     Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles PotsButton.Click
-        Dim fs As New IO.FileStream(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Appdata\\LocalLow\Brain Seal Ltd\Dark Quest 2\" & PlayerProfiles.SelectedItem & ".bin", FileMode.Open, FileAccess.ReadWrite)
-        fs.Position = &H16D
-        fs.WriteByte(&HFF)
-        fs.Position = &H16E
-        fs.WriteByte(&HFF)
-        fs.Position = &H16F
-        fs.WriteByte(&HFF)
-        fs.Close()
-        fs.Dispose()
+        Dim AddPots As New IO.FileStream(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Appdata\\LocalLow\Brain Seal Ltd\Dark Quest 2\" & PlayerProfiles.SelectedItem & ".bin", FileMode.Open, FileAccess.ReadWrite)
+        AddPots.Position = &H175
+        AddPots.WriteByte(&HFF)
+        AddPots.Position = &H176
+        AddPots.WriteByte(&HFF)
+        AddPots.Position = &H177
+        AddPots.WriteByte(&HFF)
+        AddPots.Close()
+        AddPots.Dispose()
         StatusLabel.ForeColor = Color.Red
         StatusLabel.Text = "POTS ADDED!"
+    End Sub
+
+    Private Sub DifficultyBtn_Click(sender As Object, e As EventArgs) Handles DifficultyBtn.Click
+        Dim ChangeDiff As New IO.FileStream(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Appdata\\LocalLow\Brain Seal Ltd\Dark Quest 2\" & PlayerProfiles.SelectedItem & ".bin", FileMode.Open, FileAccess.ReadWrite)
+        If DiffEasy.Checked Then
+            ChangeDiff.Position = &H4D
+            ChangeDiff.WriteByte(&H1)
+        ElseIf DiffNormal.Checked Then
+            ChangeDiff.Position = &H4D
+            ChangeDiff.WriteByte(&H0)
+        ElseIf DiffHC.Checked Then
+            ChangeDiff.Position = &H4D
+            ChangeDiff.WriteByte(&H2)
+        End If
+        ChangeDiff.Close()
+        ChangeDiff.Dispose()
+        StatusLabel.ForeColor = Color.Red
+        StatusLabel.Text = "DIFFICULTY CHANGED!"
     End Sub
 End Class

@@ -9,10 +9,10 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("DQ2SE")>
-<Assembly: AssemblyDescription("")>
+<Assembly: AssemblyDescription("Dark Quest II Save Editor")>
 <Assembly: AssemblyCompany("")>
 <Assembly: AssemblyProduct("DQ2SE")>
-<Assembly: AssemblyCopyright("Copyright ©  2019")>
+<Assembly: AssemblyCopyright("Copyright © ALTHiR  2019")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
